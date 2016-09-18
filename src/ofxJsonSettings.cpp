@@ -224,6 +224,7 @@ ofxJSON ofxJsonSettings::_jsonVal(string& key) {
 	} else if (jsonStore.isMember(key)) {
 		return jsonStore[key];
 	}
+	return ofxJSON();
 }
 
 string ofxJsonSettings::_stringValFromJson(ofxJSON& data, string& key) {
@@ -421,10 +422,11 @@ bool ofxJsonSettings::_exists(string key) {
 
 bool ofxJsonSettings::_remove(string key) {
 	try {
-		if (ofStringTimesInString(key, delimiter))
+		if (ofStringTimesInString(key, delimiter)) {
 			// TODO: removing non top-level data
 			ofLogWarning("Settings") << "remove() is only support on top-level (not nested) keys!";
-		else {
+			return false;
+		}else {
 			jsonStore.removeMember(key);
 			stringMap.erase(key);
 			intMap.erase(key);
@@ -435,6 +437,7 @@ bool ofxJsonSettings::_remove(string key) {
 			vec3Map.erase(key);
 			vec4Map.erase(key);
 			colorMap.erase(key);
+			return true;
 		}
 	} catch (const runtime_error& e) {
 		ofLogError("Settings") << "error for key: " << key << ": " << e.what();
