@@ -17,7 +17,6 @@ typedef ofxJsonSettings Settings;
 
 class ofxJsonSettings {
 public:
-	ofxJsonSettings();
 
 	// Singleton..
 	static ofxJsonSettings& get() {
@@ -115,6 +114,8 @@ protected:
 	string delimiter;
 
 private:
+
+	ofxJsonSettings();
 	// make sure there are no copies
 	ofxJsonSettings(ofxJsonSettings const&);
 	void operator=(ofxJsonSettings const&);
