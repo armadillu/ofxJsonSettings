@@ -1,5 +1,8 @@
 # ofxJsonSettings
 
+[![Build Status](https://travis-ci.org/local-projects/ofxJsonSettings.svg?branch=master)](https://travis-ci.org/local-projects/ofxJsonSettings)
+
+
 openFrameworks addon for providing a convenient, JSON-based settings manager
 
 ## Requirements
