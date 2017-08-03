@@ -408,15 +408,24 @@ ofColor ofxJsonSettings::_colorValFromJson(ofxJSON& data, string& key) {
 
 	try {
 		if (ofStringTimesInString(key, delimiter)) {
-			c.r = getNestedChild(data, key)[0].asInt();
-			c.g = getNestedChild(data, key)[1].asInt();
-			c.b = getNestedChild(data, key)[2].asInt();
-			c.a = getNestedChild(data, key)[3].asInt();
+			ofxJSON j = getNestedChild(data, key);
+			if(j.size() == 1){ //read grayscale color
+				c.r = c.g = c.b = j[0].asInt();
+			}else{ //read RGB[A] color
+				c.r = j[0].asInt();
+				c.g = j[1].asInt();
+				c.b = j[2].asInt();
+				if(j.size() > 3) c.a = j[3].asInt();
+			}
 		} else if (data.isMember(key)) {
-			c.r = data[key][0].asInt();
-			c.g = data[key][1].asInt();
-			c.b = data[key][2].asInt();
-			c.a = data[key][3].asInt();
+			if(data[key][0].size() == 1){ //read grayscale color
+				c.r = c.g = c.b = data[key][0].asInt();
+			}else{
+				c.r = data[key][0].asInt();
+				c.g = data[key][1].asInt();
+				c.b = data[key][2].asInt();
+				if(data[key].size() > 3) c.a = data[key][3].asInt();
+			}
 		} else {
 			ofLogWarning("Settings") << "no setting found for: " << key;
 		}
