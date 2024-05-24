@@ -70,6 +70,9 @@ void ofApp::draw(){
 void ofApp::onSettingsLoaded(){
 	ofLogNotice() << "Settings loaded!";
 
+	heading.load(Settings::getString("fonts/heading/face"), Settings::getFloat("fonts/heading/size"));
+	body.load(Settings::getString("fonts/body/face"), Settings::getFloat("fonts/body/size"));
+
 	// Reload your font here?
 }
 
