@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "ofxJSON.h"
 
+
 // helper for shorter syntax
 class ofxJsonSettings;
 typedef ofxJsonSettings Settings;
@@ -89,10 +90,10 @@ protected:
 	template<typename T>
 	void cacheToJson(T& container, ofxJSON& data);
 
-	void cacheToJson(unordered_map<string,ofVec2f>& container, ofxJSON& data);
-	void cacheToJson(unordered_map<string,ofVec3f>& container, ofxJSON& data);
-	void cacheToJson(unordered_map<string,ofVec4f>& container, ofxJSON& data);
-	void cacheToJson(unordered_map<string,ofColor>& container, ofxJSON& data);
+	void cacheToJson(std::unordered_map<string,ofVec2f>& container, ofxJSON& data);
+	void cacheToJson(std::unordered_map<string,ofVec3f>& container, ofxJSON& data);
+	void cacheToJson(std::unordered_map<string,ofVec4f>& container, ofxJSON& data);
+	void cacheToJson(std::unordered_map<string,ofColor>& container, ofxJSON& data);
 
 	template<typename T>
 	bool exists(T& container, const string &key);
@@ -101,15 +102,15 @@ protected:
 	void printMap(T& container, const string& text = "");
 
 	ofxJSON jsonStore;
-	unordered_map<string,string> stringMap;
-	unordered_map<string,int> intMap;
-	unordered_map<string,bool> boolMap;
-	unordered_map<string,float> floatMap;
-	unordered_map<string,double> doubleMap;
-	unordered_map<string,ofVec2f> vec2Map;
-	unordered_map<string,ofVec3f> vec3Map;
-	unordered_map<string,ofVec4f> vec4Map;
-	unordered_map<string,ofColor> colorMap;
+	std::unordered_map<string,string> stringMap;
+	std::unordered_map<string,int> intMap;
+	std::unordered_map<string,bool> boolMap;
+	std::unordered_map<string,float> floatMap;
+	std::unordered_map<string,double> doubleMap;
+	std::unordered_map<string,ofVec2f> vec2Map;
+	std::unordered_map<string,ofVec3f> vec3Map;
+	std::unordered_map<string,ofVec4f> vec4Map;
+	std::unordered_map<string,ofColor> colorMap;
 
 	string delimiter;
 

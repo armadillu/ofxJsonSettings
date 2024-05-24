@@ -8,6 +8,8 @@
 
 #include "ofxJsonSettings.h"
 
+using namespace std;
+
 ofxJsonSettings::ofxJsonSettings() {
 	delimiter = "/";
 }
